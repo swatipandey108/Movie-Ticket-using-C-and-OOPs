@@ -33,11 +33,11 @@ public:
     // Book a seat if available
     bool reserveSeat(int row, int col) {
         if (row < 1 || row > seats.size() || col < 1 || col > seats[0].size()) {
-            cout << "❌ Invalid seat selection!" << endl;
+            cout << "Invalid seat selection!" << endl;
             return false;
         }
         if (seats[row - 1][col - 1] == 0) {
-            cout << "⚠️ Seat already booked!" << endl;
+            cout << "Seat already booked!" << endl;
             return false;
         }
         seats[row - 1][col - 1] = 0;
@@ -79,7 +79,7 @@ public:
 
     // Display available shows
     void displayShows() {
-        cout << "\nAvailable Shows for 🎥 \"" << title << "\":" << endl;
+        cout << "\nAvailable Shows for \"" << title << "\":" << endl;
         for (int i = 0; i < shows.size(); i++) {
             cout << i + 1 << ". " << shows[i].time 
                  << " | Available Seats: " << shows[i].seatMap.availableSeats() << endl;
@@ -105,7 +105,7 @@ public:
         bool exit = false;
 
         while (!exit) {
-            cout << "\n🎬 Welcome to the Movie Ticket Booking System 🎟️" << endl;
+            cout << "\nWelcome to the Movie Ticket Booking System" << endl;
             cout << "---------------------------------------------" << endl;
             
             // Show available movies
@@ -119,13 +119,13 @@ public:
             // Handle exit
             if (movieChoice == movies.size() + 1) {
                 exit = true;
-                cout << "\n👋 Thank you for visiting! Have a great day!\n" << endl;
+                cout << "\nThank you for visiting! Have a great day!\n" << endl;
                 break;
             }
 
             // Invalid movie selection
             if (movieChoice < 1 || movieChoice > movies.size()) {
-                cout << "❌ Invalid movie selection! Try again.\n" << endl;
+                cout << "Invalid movie selection! Try again.\n" << endl;
                 continue;
             }
 
@@ -138,7 +138,7 @@ public:
 
             // Invalid showtime
             if (showChoice < 1 || showChoice > selectedMovie.shows.size()) {
-                cout << "❌ Invalid showtime selection! Try again.\n" << endl;
+                cout << "Invalid showtime selection! Try again.\n" << endl;
                 continue;
             }
 
@@ -161,21 +161,21 @@ public:
 
                 // Try booking seat
                 if (selectedShow.seatMap.reserveSeat(row, col)) {
-                    cout << "✅ Seat booked successfully at Row " << row << ", Seat " << col << "!" << endl;
+                    cout << "Seat booked successfully at Row " << row << ", Seat " << col << "!" << endl;
                 } else {
-                    cout << "⚠️ Failed to book this seat. Try another one." << endl;
+                    cout << "Failed to book this seat. Try another one." << endl;
                     i--; // Retry this seat
                 }
             }
 
             // Show updated seat map
-            cout << "\n🪑 Updated Seat Map:" << endl;
+            cout << "\nUpdated Seat Map:" << endl;
             selectedShow.seatMap.display();
 
             // Booking summary
-            cout << "\n🎟️ Booking Confirmed for: \"" << selectedMovie.title 
+            cout << "\nBooking Confirmed for: \"" << selectedMovie.title 
                  << "\" at " << selectedShow.time << endl;
-            cout << "Enjoy your movie! 🍿" << endl;
+            cout << "Enjoy your movie!" << endl;
         }
     }
 };
